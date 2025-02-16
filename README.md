@@ -62,7 +62,7 @@
 
 ### Ответ
 
-Cканирование Metasploitable в режимах SYN, FIN, Xmas, UDP
+- Cканирование Metasploitable в режимах SYN, FIN, Xmas, UDP
 
 <details> <summary>Команды</summary>
 
@@ -70,6 +70,22 @@ Cканирование Metasploitable в режимах SYN, FIN, Xmas, UDP
 2. FIN `nmap -sA`
 3. Xmas `nmap -sX`
 4. Xmas `nmap -sU`
+
+</details>
+
+- Запишите сеансы сканирования в Wireshark.
+
+Для записи в pcap, можно использовать tcpdump, а потом открыть уже в wireshark.
+
+Записать сеаныс сканирования можно так:
+
+<details> <summary>Команды</summary>
+
+1. запускаем tcpdump с фильтром host, в котором указан ip сканированной VM
+2. запуск nmap
+3. остановка tcpdump
+
+`tcpdump -i eth0@if28 host 172.17.0.2 -w 172.17.0.2.pcap && nmap -sS 172.17.0.2 && killall tcpdump`
 
 </details>
 
